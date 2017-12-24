@@ -1,6 +1,12 @@
+"""
+Script principal
+"""
 from pyshorteners import Shortener
 
-class shortlinks(Shortener):
+class Shortlinks(Shortener):
+    """
+    Classe que lida com a compressão ou encurtamento do link.
+    """
     def __init__(self):
         print('''
         Instruções: 
@@ -21,19 +27,27 @@ class shortlinks(Shortener):
         elif self.option == 3:
             self.qrcode_url()
         else:
-            pass
+            print('Opção inválida.')
 
     def short_url(self):
-        self.encurta = self.shortener.short(self.url)
-        print("Short URL: " + self.encurta + "\n")
-        
+        """
+        Encurta uma URL
+        """
+        self.shortened_url = self.shortener.short(self.url)
+        print("Short URL: " + self.shortened_url + "\n")
 
     def decode_url(self):
-        self.decodedUrl = self.shortener.expand(self.url)
-        print("URL decodificada: " + self.decodedUrl + "\n")
+        """
+        Descomprime uma URL
+        """
+        self.decoded_url = self.shortener.expand(self.url)
+        print("URL decodificada: " + self.decoded_url + "\n")
 
     def qrcode_url(self):
-        self.encurta = self.shortener.short(self.url)
+        """
+        Gera o QRCode da URL.
+        """
+        self.shortener.short(self.url)
         print(self.shortener.qrcode())
 
-app = shortlinks()
+APP = Shortlinks()
